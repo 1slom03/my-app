@@ -31,9 +31,7 @@ const theme = createTheme({
 });
 
 const projects = [
-    { id: 1, title: "AI Dashboard Platform", desc: "Keyingi avlod sun'iy intellekt tahlil tizimi.", tech: ["Next.js", "Tailwind", "MUI"] },
-    { id: 2, title: "E-Commerce Cosmos", desc: "3D elementlar bilan boyitilgan internet do'kon.", tech: ["React", "Framer Motion", "Axios"] },
-    { id: 3, title: "SaaS Analytics Tool", desc: "Katta hajmdagi ma'lumotlarni real vaqtda kuzatish paneli.", tech: ["TypeScript", "TanStack Query", "Tailwind"] },
+    { id: 1, title: "Movie Site", desc: "Filmlarni maroqli tomosha qilish uchun.", tech: ["Next.js", "Tailwind", "Tailwind"] }
 ];
 const navbarItems = [
     { id: "about", label: "Men Haqimda", icon: <AccountCircleIcon /> },
@@ -99,7 +97,7 @@ export default function Home() {
                                 <a href="https://github.com/1slom03" target="_blank" className=" p-2 bg-slate-800/50 hover:bg-slate-800 text-gray-400 hover:text-blue-400 rounded-xl transition-all duration-300 border border-slate-700/50 flex items-center justify-center">
                                     <GitHubIcon sx={{ fontSize: 20 }} />
                                 </a>
-                                <a href="https://www.linkedin.com/in/islomjon-karimjonov-258625263/" target="_blank"  className="p-2 bg-slate-800/50 hover:bg-slate-800 text-gray-400 hover:text-pink-400 rounded-xl transition-all duration-300 border border-slate-700/50 flex items-center justify-center">
+                                <a href="https://www.linkedin.com/in/islomjon-karimjonov-258625263/" target="_blank" className="p-2 bg-slate-800/50 hover:bg-slate-800 text-gray-400 hover:text-pink-400 rounded-xl transition-all duration-300 border border-slate-700/50 flex items-center justify-center">
                                     <LinkedInIcon sx={{ fontSize: 20 }} />
                                 </a>
                             </div>
@@ -137,7 +135,7 @@ export default function Home() {
                                         </h3>
                                         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
                                             {teachStack.map((tech) => (
-                                                <motion.div key={tech} variants={itemVariants} whileHover={{ scale: 1.05, borderColor: "#3b82f6" }} className="bg-slate-900/50 border cursor-pointer border-slate-800 p-4 rounded-2xl flex items-center justify-center text-center text-sm font-medium transition-colors cursor-default" >
+                                                <motion.div key={tech} variants={itemVariants} whileHover={{ scale: 1.05, borderColor: "#3b82f6" }} className="bg-slate-900/50 border border-slate-800 p-4 rounded-2xl flex items-center justify-center text-center text-sm font-medium transition-colors cursor-default" >
                                                     {tech}
                                                 </motion.div>
                                             ))}
@@ -149,30 +147,32 @@ export default function Home() {
                             {activeTab === "projects" && (
                                 <motion.div key="projects" variants={containerVariants} initial="hidden" animate="visible" exit={{ opacity: 0, y: -20 }} className="grid grid-cols-1 md:grid-cols-2 gap-6" >
                                     {projects.map((project) => (
-                                        <motion.div key={project.id} variants={itemVariants} whileHover={{ y: -8 }} className="bg-slate-900/40 backdrop-blur-md border border-slate-800/80 p-6 rounded-3xl flex flex-col justify-between group relative overflow-hidden" >
-                                            <div>
-                                                <div className="flex justify-between items-start mb-4">
-                                                    <div className="p-3 bg-slate-800/80 rounded-2xl text-blue-400 group-hover:text-pink-400 transition-colors flex items-center justify-center">
-                                                        <BusinessCenterIcon sx={{ fontSize: 22 }} />
+                                        <motion.div key={project.id} variants={itemVariants} whileHover={{ y: -8 }} className="cursor-pointer bg-slate-900/40 backdrop-blur-md border border-slate-800/80 p-6 rounded-3xl flex flex-col justify-between group relative overflow-hidden" >
+                                            <a href="https://moviesprojects.vercel.app/" target="_blank">
+                                                <div>
+                                                    <div className="flex justify-between items-start mb-4">
+                                                        <div className="p-3 bg-slate-800/80 rounded-2xl text-blue-400 group-hover:text-pink-400 transition-colors flex items-center justify-center">
+                                                            <BusinessCenterIcon sx={{ fontSize: 22 }} />
+                                                        </div>
+                                                        <strong className="text-gray-500 hover:text-white transition-colors flex items-center justify-center">
+                                                            <LaunchIcon sx={{ fontSize: 20 }} />
+                                                        </strong>
                                                     </div>
-                                                    <a href="#" className="text-gray-500 hover:text-white transition-colors flex items-center justify-center">
-                                                        <LaunchIcon sx={{ fontSize: 20 }} />
-                                                    </a>
+                                                    <h3 className="text-xl font-bold group-hover:text-blue-400 transition-colors duration-300">
+                                                        {project.title}
+                                                    </h3>
+                                                    <p className="text-gray-400 text-sm mt-2 leading-relaxed">
+                                                        {project.desc}
+                                                    </p>
                                                 </div>
-                                                <h3 className="text-xl font-bold group-hover:text-blue-400 transition-colors duration-300">
-                                                    {project.title}
-                                                </h3>
-                                                <p className="text-gray-400 text-sm mt-2 leading-relaxed">
-                                                    {project.desc}
-                                                </p>
-                                            </div>
-                                            <div className="flex flex-wrap gap-2 mt-6">
-                                                {project.tech.map((t) => (
-                                                    <span key={t} className="text-xs font-mono bg-slate-800/60 text-slate-300 px-3 py-1 rounded-full border border-slate-700/50">
-                                                        {t}
-                                                    </span>
-                                                ))}
-                                            </div>
+                                                <div className="flex flex-wrap gap-2 mt-6">
+                                                    {project.tech.map((item, index) => (
+                                                        <p key={index} className="text-xs font-mono bg-slate-800/60 text-slate-300 px-3 py-1 rounded-full border border-slate-700/50">
+                                                            {item}
+                                                        </p>
+                                                    ))}
+                                                </div>
+                                            </a>
                                         </motion.div>
                                     ))}
                                 </motion.div>
@@ -192,10 +192,10 @@ export default function Home() {
                                         </div>
 
                                         <div className="pt-4 flex flex-col gap-3">
-                                            <Button variant="contained" color="secondary" size="large" fullWidth startIcon={<MailOutlineIcon />} className="rounded-xl py-3 shadow-lg shadow-pink-500/20 font-semibold normal-case" href="mailto:example@domain.com" >
-                                                example@domain.com
+                                            <Button variant="contained" color="secondary" size="large" fullWidth startIcon={<MailOutlineIcon />} className="rounded-xl py-3 shadow-lg shadow-pink-500/20 font-semibold normal-case" target="_blank" href="mailto:karimjonov3islomjon@gmail.com" >
+                                                karimjonov3islomjon@gmail.com
                                             </Button>
-                                            <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<TelegramIcon />} className="rounded-xl py-3 border-slate-700 hover:border-blue-500 text-gray-300 normal-case" >
+                                            <Button variant="outlined" color="primary" size="large" fullWidth startIcon={<TelegramIcon />} className="rounded-xl py-3 border-slate-700 hover:border-blue-500 text-gray-300 normal-case" target="_blank" href="https://t.me/mr_willl" >
                                                 Telegram orqali bog'lanish
                                             </Button>
                                         </div>
